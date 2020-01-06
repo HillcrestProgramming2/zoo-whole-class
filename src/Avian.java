@@ -1,9 +1,7 @@
-package avian;
-
 /**
  * The bird people
  */
-public abstract class Avian extends ZooResident{
+public abstract class Avian extends ZooResident {
     private double speed;
     private boolean canFly;
     private boolean inFlight;
@@ -19,10 +17,11 @@ public abstract class Avian extends ZooResident{
      * @param speed         Movement speed of creature
      * @param canFly        If the creature can fly
      */
-    public Avian(int age, String color, double weight, boolean endangered, boolean sleeping, double speed, boolean canFly) {
+    public Avian(int age, String color, double weight, boolean endangered, boolean sleeping, double speed, boolean canFly, boolean inFlight) {
         super(age, color, weight, endangered, sleeping);
         this.speed = speed;
         this.canFly = canFly;
+        this.inFlight = inFlight;
     }
 
     /**
@@ -32,11 +31,11 @@ public abstract class Avian extends ZooResident{
     @Override
     public String toString() {
         return "Avian.ZooResident{" +
-                "age=" + super.getAge() +
-                ", color='" + super.getColor() + '\'' +
-                ", weight=" + super.getWeight() +
-                ", endangered=" + super.isEndangered() +
-                ", sleeping=" + super.isSleeping() +
+                "age=" + getAge() +
+                ", color='" + getColor() + '\'' +
+                ", weight=" + getWeight() +
+                ", endangered=" + isEndangered() +
+                ", sleeping=" + isSleeping() +
                 ", speed=" + speed +
                 ", canFly=" + canFly +
                 '}';
@@ -47,11 +46,22 @@ public abstract class Avian extends ZooResident{
      * @return if the bird starts flying
      */
     public String fly(){
-        if(canFly = true){
-            inFlight = true;
-            return "I'm flying!";
+        if(canFly){
+            if(!isSleeping()){
+                inFlight = true;
+                return "I'm flying!";
+            }
+            return "Zzz... (can't sleep and fly)";
         }
         return "I tried to fly but I'm too heavy";
+    }
+
+    /**
+     * Returns if the creature is flying
+     * @return If the creature is flying
+     */
+    public boolean isInFlight() {
+        return inFlight;
     }
 
     /**
@@ -79,18 +89,11 @@ public abstract class Avian extends ZooResident{
     }
 
     /**
-     * Returns if the creature is flying
-     * @return If the creature is flying
-     */
-    public boolean isInFlight() {
-        return inFlight;
-    }
-
-    /**
      * Sets if the creature can fly
      * @param canFly If the creature can fly
      */
     public void setCanFly(boolean canFly) {
         this.canFly = canFly;
     }
+
 }

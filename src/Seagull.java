@@ -1,4 +1,5 @@
-public class Seagull extends Birbs {
+
+public class Seagull extends Avian {
 
     /**
      * builds a zoo resident
@@ -9,8 +10,8 @@ public class Seagull extends Birbs {
      * @param endangered is the resident endangered
      * @param sleeping   is the resident sleeping
      */
-    public Seagull(int age, String color, double weight, boolean endangered, boolean sleeping) {
-        super(age, color, weight, endangered, sleeping);
+    public Seagull(int age, String color, double weight, boolean endangered, boolean sleeping, double speed, boolean canFly, boolean inFlight) {
+        super(age, color, weight, endangered, sleeping, speed, canFly, inFlight);
         
     }
 
